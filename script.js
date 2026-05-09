@@ -58,17 +58,17 @@ function startMusic() {
     audio.play()
       .then(() => {
         isPlaying = true;
-        btn.textContent = '⏸';
+        btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
       })
       .catch(() => {
         isPlaying = true;
-        btn.textContent = '⏸';
+        btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
         simulateProgress();
       });
   } else {
     // Modo demo sin audio
     isPlaying = true;
-    btn.textContent = '⏸';
+    btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
     simulateProgress();
   }
 }
@@ -79,15 +79,15 @@ function togglePlay() {
   if (audioReady || audio.readyState >= 2) {
     if (isPlaying) {
       audio.pause();
-      btn.textContent = '▶';
+      btn.innerHTML = '&#9654;';
     } else {
       audio.play();
-      btn.textContent = '⏸';
+      btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
     }
     isPlaying = !isPlaying;
   } else {
     isPlaying = !isPlaying;
-    btn.textContent = isPlaying ? '⏸' : '▶';
+    btn.innerHTML = isPlaying ? '<span style="letter-spacing:-2px">❙❙</span>' : '&#9654;';
     if (isPlaying) simulateProgress();
     else clearInterval(simInterval);
   }
