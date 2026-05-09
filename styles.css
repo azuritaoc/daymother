@@ -354,19 +354,23 @@ body {
 .ctrl-btn:hover { color: var(--petal); transform: scale(1.15); }
 
 .ctrl-play {
-  width: clamp(52px, 12vw, 68px);
-  height: clamp(52px, 12vw, 68px);
+  width: clamp(58px, 13vw, 72px);
+  height: clamp(58px, 13vw, 72px);
   border-radius: 50%;
-  background: radial-gradient(circle, var(--rose), var(--crimson));
-  border: none;
+  background: radial-gradient(circle at 35% 35%, #e05070, var(--crimson));
+  border: 2px solid rgba(255,255,255,.2);
   color: #fff;
   cursor: pointer;
-  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  font-size: clamp(1rem, 3vw, 1.4rem);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgba(192,54,74,.5);
+  box-shadow:
+    0 0 0 4px rgba(192,54,74,.2),
+    0 0 25px rgba(192,54,74,.6),
+    inset 0 1px 0 rgba(255,255,255,.25);
   transition: transform .2s, box-shadow .2s;
+  padding-left: 3px;
 }
 
 .ctrl-play:hover {
