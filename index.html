@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Día, Mamá 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <canvas id="petals-canvas"></canvas>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ══════ INTRO ══════ -->
+  <div id="intro">
+    <div class="intro-heart">
+      <svg viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="hg" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#D4607A"/>
+            <stop offset="100%" stop-color="#8B0020"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M50 85 C50 85 5 55 5 28 C5 13 17 3 30 3 C38 3 45 7 50 14 C55 7 62 3 70 3 C83 3 95 13 95 28 C95 55 50 85 50 85Z"
+          fill="url(#hg)" filter="url(#glow)"/>
+        <path d="M50 80 C50 80 10 52 10 28 C10 16 20 8 30 8 C39 8 46 13 50 20"
+          stroke="rgba(255,255,255,.25)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="intro-subtitle">Una dedicatoria especial para ti</div>
+    <button class="btn-abrir" onclick="openMain()">✦ Toca para abrir ✦</button>
+  </div>
+
+  <!-- ══════ MAIN ══════ -->
+  <div id="main">
+
+    <audio id="audio" src="music.m4a" loop preload="auto"></audio>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="photo-frame reveal">
+        <img src="family.jpeg" alt="Familia">
+      </div>
+
+      <h1 class="hero-title reveal reveal-delay-1">Feliz Día, Mamá</h1>
+
+      <div class="hero-dots reveal reveal-delay-2">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot-heart">♥</span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+
+      <!-- REPRODUCTOR -->
+      <div class="player-section reveal reveal-delay-3">
+        <div class="player-label">Te dedico esta canción</div>
+        <div class="player-song-title">Con todo mi amor</div>
+        <div class="player-song-sub">♥ Con amor</div>
+
+        <div class="player-progress-wrap">
+          <span class="player-time" id="time-current">0:00</span>
+          <div class="player-progress" id="progress-bar" onclick="seekAudio(event)">
+            <div class="player-progress-bar" id="progress-fill"></div>
+          </div>
+          <span class="player-time" id="time-total">0:00</span>
+        </div>
+
+        <div class="player-controls">
+          <button class="ctrl-btn" onclick="prevTrack()">⏮</button>
+          <button class="ctrl-play" id="play-btn" onclick="togglePlay()">▶</button>
+          <button class="ctrl-btn" onclick="nextTrack()">⏭</button>
+        </div>
+
+        <div class="player-hearts">
+          <span class="ph">♥</span>
+          <span class="ph">♥</span>
+          <span class="ph">♥</span>
+          <span class="ph">♥</span>
+          <span class="ph">♥</span>
+        </div>
+      </div>
+
+      <div class="scroll-indicator reveal" onclick="scrollToDedicatoria()">
+        <span>Una dedicatoria para ti</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- DEDICATORIA -->
+    <section class="section-dedicatoria" id="dedicatoria">
+      <div class="dedi-card reveal">
+        <span class="dedi-heart-top">♥</span>
+        <h2 class="dedi-title reveal">Una dedicatoria para ti</h2>
+
+        <p class="dedi-text reveal reveal-delay-1">
+          Mamá, no existe en el mundo entero una palabra tan poderosa como la que te nombra a ti.
+          Eres el primer abrazo que conocí, la voz que calmó mis miedos,
+          la fuerza que me enseñó a caminar incluso cuando el camino era difícil.
+        </p>
+
+        <p class="dedi-text reveal reveal-delay-2">
+          Cada logro que alcanzo lleva tu huella. Cada sonrisa que doy tiene tu origen.
+          Hoy, en este día tan especial, quiero que sepas que eres y siempre serás
+          lo más grande de mi vida.
+        </p>
+
+        <p class="dedi-text reveal reveal-delay-3">
+          Gracias por existir.Gracias por ser nuestra mamá.
+        </p>
+
+        <div class="dedi-firma reveal">Con mucho amor</div>
+      </div>
+    </section>
+
+    <!-- FLORES -->
+    <section class="section-flores">
+      <div class="flores-dots">
+        <span>♥</span>
+        <span>♥</span>
+        <span class="fd-m">♥</span>
+        <span>♥</span>
+        <span>♥</span>
+      </div>
+
+      <h2 class="flores-title reveal">Para la mejor mamá</h2>
+
+      <div class="flores-img-wrap reveal reveal-delay-1">
+        <img src="flores.png" alt="Ramo de flores">
+      </div>
+
+      <p class="flores-caption reveal reveal-delay-2">
+        <span>♥</span> Feliz día Mamá <span>♥</span>
+      </p>
+    </section>
+
+    <!-- FINAL -->
+    <section class="section-final">
+      <div class="final-hearts">
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+      </div>
+      <h2 class="final-title reveal">Te amo, Mamá</h2>
+      <p class="final-subtitle reveal reveal-delay-1">Siempre en mi corazón</p>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
