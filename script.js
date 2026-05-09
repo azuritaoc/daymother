@@ -58,17 +58,17 @@ function startMusic() {
     audio.play()
       .then(() => {
         isPlaying = true;
-        btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
+        btn.innerHTML = "<svg width='18' height='18' viewBox='0 0 24 24' fill='white'><rect x='5' y='3' width='4' height='18'/><rect x='15' y='3' width='4' height='18'/></svg>";
       })
       .catch(() => {
         isPlaying = true;
-        btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
+        btn.innerHTML = "<svg width='18' height='18' viewBox='0 0 24 24' fill='white'><rect x='5' y='3' width='4' height='18'/><rect x='15' y='3' width='4' height='18'/></svg>";
         simulateProgress();
       });
   } else {
     // Modo demo sin audio
     isPlaying = true;
-    btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
+    btn.innerHTML = "<svg width='18' height='18' viewBox='0 0 24 24' fill='white'><rect x='5' y='3' width='4' height='18'/><rect x='15' y='3' width='4' height='18'/></svg>";
     simulateProgress();
   }
 }
@@ -79,10 +79,10 @@ function togglePlay() {
   if (audioReady || audio.readyState >= 2) {
     if (isPlaying) {
       audio.pause();
-      btn.innerHTML = '&#9654;';
+      btn.innerHTML = "<svg width='18' height='18' viewBox='0 0 24 24' fill='white'><polygon points='5,3 19,12 5,21'/></svg>";
     } else {
       audio.play();
-      btn.innerHTML = '<span style="letter-spacing:-2px">❙❙</span>';
+      btn.innerHTML = "<svg width='18' height='18' viewBox='0 0 24 24' fill='white'><rect x='5' y='3' width='4' height='18'/><rect x='15' y='3' width='4' height='18'/></svg>";
     }
     isPlaying = !isPlaying;
   } else {
