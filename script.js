@@ -1,6 +1,4 @@
-/* ═══════════════════════════════════════════
-   CURSOR PERSONALIZADO
-═══════════════════════════════════════════ */
+
 const cursor     = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursor-ring');
 
@@ -11,9 +9,6 @@ document.addEventListener('mousemove', e => {
   cursorRing.style.top  = e.clientY + 'px';
 });
 
-/* ═══════════════════════════════════════════
-   ABRIR PANTALLA PRINCIPAL
-═══════════════════════════════════════════ */
 function openMain() {
   document.getElementById('intro').classList.add('hidden');
   const main = document.getElementById('main');
@@ -26,17 +21,11 @@ function openMain() {
   }, 600);
 }
 
-/* ═══════════════════════════════════════════
-   SCROLL A DEDICATORIA
-═══════════════════════════════════════════ */
 function scrollToDedicatoria() {
   const seccion = document.getElementById('dedicatoria');
   if (seccion) seccion.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* ═══════════════════════════════════════════
-   AUDIO / REPRODUCTOR
-═══════════════════════════════════════════ */
 const audio = document.getElementById('audio');
 let isPlaying   = false;
 let simProgress = 0;
@@ -51,7 +40,6 @@ audio.addEventListener('error', () => {
   console.warn('⚠️ No se pudo cargar el audio. Verifica que cancion-mama.mp3 esté en la misma carpeta.');
 });
 
-/* Inicia música al abrir */
 function startMusic() {
   const btn = document.getElementById('play-btn');
   if (audioReady || audio.readyState >= 2) {
@@ -66,14 +54,14 @@ function startMusic() {
         simulateProgress();
       });
   } else {
-    // Modo demo sin audio
+
     isPlaying = true;
     btn.innerHTML = "<svg width='18' height='18' viewBox='0 0 24 24' fill='white'><rect x='5' y='3' width='4' height='18'/><rect x='15' y='3' width='4' height='18'/></svg>";
     simulateProgress();
   }
 }
 
-/* Play / Pausa */
+
 function togglePlay() {
   const btn = document.getElementById('play-btn');
   if (audioReady || audio.readyState >= 2) {
@@ -93,7 +81,6 @@ function togglePlay() {
   }
 }
 
-/* Progreso simulado (modo demo) */
 function simulateProgress() {
   clearInterval(simInterval);
   simInterval = setInterval(() => {
@@ -108,7 +95,6 @@ function simulateProgress() {
   }, 500);
 }
 
-/* Actualizar barra con audio real */
 audio.addEventListener('timeupdate', () => {
   if (!audio.duration) return;
   const pct = (audio.currentTime / audio.duration) * 100;
@@ -121,7 +107,6 @@ audio.addEventListener('timeupdate', () => {
   document.getElementById('time-total').textContent = tm + ':' + ts;
 });
 
-/* Clic en barra de progreso */
 function seekAudio(e) {
   const bar = document.getElementById('progress-bar');
   const pct = e.offsetX / bar.offsetWidth;
@@ -139,9 +124,6 @@ function nextTrack() {
   else simProgress = 0;
 }
 
-/* ═══════════════════════════════════════════
-   PÉTALOS / CORAZONES (Canvas)
-═══════════════════════════════════════════ */
 const canvas = document.getElementById('petals-canvas');
 const ctx    = canvas.getContext('2d');
 let petals      = [];
@@ -202,10 +184,6 @@ function spawnPetals() {
   petalActive = true;
   animatePetals();
 }
-
-/* ═══════════════════════════════════════════
-   REVEAL AL HACER SCROLL
-═══════════════════════════════════════════ */
 function observeReveal() {
   const elements = document.querySelectorAll('.reveal, .dedi-text');
   const observer = new IntersectionObserver((entries) => {
